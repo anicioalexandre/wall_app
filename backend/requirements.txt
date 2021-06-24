@@ -1,0 +1,8 @@
+coverage
+django-sendgrid-v5
+Django>=3.0,<4.0
+djangorestframework
+djangorestframework-simplejwt
+psycopg2-binary>=2.8
+python-decouple
+six
