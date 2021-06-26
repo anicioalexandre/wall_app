@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
 
-const App: FC = () => <div>Wall app</div>
+const App: FC = () => <div className="text-success">Wall app</div>
 
 export default App
