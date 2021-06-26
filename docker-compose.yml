@@ -19,6 +19,7 @@ services:
       interval: 3s
       timeout: 3s
       retries: 5
+
   backend:
     container_name: wall_app_backend
     restart: always
@@ -36,3 +37,15 @@ services:
     depends_on:
       db:
         condition: service_healthy
+
+  frontend:
+    container_name: wall_app_frontend
+    restart: always
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend:/code
+      - /code/node_modules
+    ports:
+      - "3030:3030"
