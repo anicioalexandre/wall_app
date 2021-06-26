@@ -54,3 +54,6 @@ docs/_build/
 
 # Environment variables
 .env
+
+# Front-End node_modules
+**/node_modules

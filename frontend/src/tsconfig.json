@@ -1,0 +1,8 @@
+{
+  "extends": "../typescript/tsconfig-base",
+  "compilerOptions": {
+    "outDir": "./dist"
+  },
+  "include": ["**/*.tsx"],
+  "exclude": ["node_modules"]
+}
