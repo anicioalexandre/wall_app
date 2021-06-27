@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .no-outline:focus {
+    outline: 0;
+  }
+
+  .smooth {
+    @apply transition-all duration-300 ease-in-out;
+  }
+}
