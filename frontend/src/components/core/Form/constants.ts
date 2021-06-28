@@ -1,9 +1,9 @@
 export const INITIAL_FORM = {
   email: '',
   password: '',
-  userName: ''
+  username: ''
 }
 
 export const LOGIN_BUTTON = 'Login'
 
-export const REGISTER_BUTTON = 'Register'
+export const SIGNUP_BUTTON = 'Sign up'
