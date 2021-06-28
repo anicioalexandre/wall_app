@@ -38,4 +38,11 @@ describe('Button tests', () => {
 
     expect(mockClick).toHaveBeenCalled()
   })
+
+  it('renders styles from className', () => {
+    renderComponent({ className: 'style' })
+    const button = screen.getByText(/test button/i)
+
+    expect(button).toHaveClass('style')
+  })
 })

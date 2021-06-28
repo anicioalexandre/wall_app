@@ -10,4 +10,12 @@
   .smooth {
     @apply transition-all duration-300 ease-in-out;
   }
+
+  .error-message {
+    @apply text-danger text-sm whitespace-pre-line;
+  }
+
+  .button-base {
+    @apply p-2 rounded disabled:cursor-not-allowed smooth
+  }
 }

@@ -1,40 +1,40 @@
 import React, { FC } from 'react'
 import { connect, ConnectedProps } from 'react-redux'
 
+import { signUpApi } from '../../redux/modules/profile'
 import { GlobalState } from '../../redux/modules/types'
-import { tokenApi } from '../../redux/modules/auth'
 import Button from '../core/Button'
 import Form from '../core/Form'
-import useLogin from './useLogin'
+import useSignUp from './useSignUp'
 
-const Login: FC<PropsFromRedux> = ({ loginAction, token, error }) => {
-  const { handleLogin, history } = useLogin({ loginAction, token })
+const SignUp: FC<PropsFromRedux> = ({ signUpAction, profile, error }) => {
+  const { handleSignUp, history } = useSignUp({ signUpAction, profile })
 
   return (
     <div className="flex flex-col items-center gap-2">
-      <Form onSubmit={handleLogin} error={error} />
+      <Form onSubmit={handleSignUp} error={error} isSignUpForm />
       <Button
         className="text-primary-light bg-transparent"
-        onClick={() => history.push('/signup')}
+        onClick={() => history.push('/login')}
       >
-        Not a member yet? Sign up here!
+        Already have an account? Login here!
       </Button>
       {error?.detail && <p className="error-message">{error.detail}</p>}
     </div>
   )
 }
 
-const mapState = ({ auth }: GlobalState) => ({
-  token: auth.token,
-  error: auth.error
+const mapState = ({ profile }: GlobalState) => ({
+  error: profile.error,
+  profile: profile.profile
 })
 
 const mapDispatch = {
-  loginAction: tokenApi
+  signUpAction: signUpApi
 }
 
 const connector = connect(mapState, mapDispatch)
 
 export type PropsFromRedux = ConnectedProps<typeof connector>
 
-export default connector(Login)
+export default connector(SignUp)
