@@ -2,15 +2,19 @@ import { useEffect } from 'react'
 import { useHistory } from 'react-router'
 
 import { API_ENDPOINTS } from '../../services/constants'
+import { setLocalStorage } from '../../services/setLocalStorage'
 import { FormType } from '../core/Form/types'
 import { PropsFromRedux } from './index'
 
-const useLogin = ({ loginAction, isLogged }: PropsFromRedux) => {
+const useLogin = ({ loginAction, token }: Omit<PropsFromRedux, 'error'>) => {
   const history = useHistory()
 
   useEffect(() => {
-    if (isLogged) history.push('/')
-  }, [isLogged])
+    if (token) {
+      setLocalStorage(token)
+      history.push('/')
+    }
+  }, [token])
 
   const handleLogin = (formValues: FormType) =>
     loginAction({
@@ -19,7 +23,7 @@ const useLogin = ({ loginAction, isLogged }: PropsFromRedux) => {
       data: formValues
     })
 
-  return { handleLogin }
+  return { handleLogin, history }
 }
 
 export default useLogin

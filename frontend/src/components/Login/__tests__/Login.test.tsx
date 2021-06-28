@@ -1,4 +1,5 @@
 import React from 'react'
+import { MemoryRouter } from 'react-router'
 import '@testing-library/jest-dom/extend-expect'
 import { fireEvent, screen, waitFor } from '@testing-library/dom'
 
@@ -13,7 +14,7 @@ beforeEach(() => {
 const mockHistoryPush = jest.fn()
 
 jest.mock('react-router', () => ({
-  ...jest.requireActual('react-router-dom'),
+  ...(jest.requireActual('react-router-dom') as Record<string, never>),
   useHistory: () => ({ push: mockHistoryPush })
 }))
 
@@ -25,13 +26,14 @@ const renderComponent = () => renderWithRedux(<Login />)
 describe('Login tests', () => {
   const fillFormAndSubmit = () => {
     const emailInput = screen.getByLabelText('Email')
-    const emailPassword = screen.getByLabelText('Password')
+    const passwordInput = screen.getByLabelText('Password')
     const loginButton = screen.getByText('Login')
 
     fireEvent.change(emailInput, { target: { value: 'some@email.com' } })
-    fireEvent.change(emailPassword, { target: { value: 'SomeValue' } })
+    fireEvent.change(passwordInput, { target: { value: 'SomeValue' } })
     fireEvent.click(loginButton)
   }
+
   it('calls fetch endpoint when clicking in the submit button and redirect if resolved', async () => {
     mockEndpoint.mockResolvedValue('token')
     renderComponent()
@@ -40,6 +42,7 @@ describe('Login tests', () => {
     await waitFor(() => expect(fetchEndpoint).toHaveBeenCalledTimes(1))
     expect(mockHistoryPush).toHaveBeenCalledTimes(1)
   })
+
   it('calls fetch endpoint when clicking in the submit button and do not redirect if rejected', async () => {
     mockEndpoint.mockRejectedValue('error')
     renderComponent()
@@ -47,5 +50,28 @@ describe('Login tests', () => {
 
     await waitFor(() => expect(fetchEndpoint).toHaveBeenCalledTimes(1))
     expect(mockHistoryPush).not.toHaveBeenCalled()
+  })
+
+  it('renders a router link', async () => {
+    mockEndpoint.mockRejectedValue({ detail: 'Error message.' })
+    renderComponent()
+    const signUpLink = await screen.findByText(
+      'Not a member yet? Sign up here!'
+    )
+
+    expect(signUpLink).toBeInTheDocument()
+
+    fireEvent.click(signUpLink)
+
+    expect(mockHistoryPush).toHaveBeenCalledTimes(1)
+  })
+
+  it('renders an error message', async () => {
+    mockEndpoint.mockRejectedValue({ detail: 'Error message.' })
+    renderComponent()
+    fillFormAndSubmit()
+    const errorMessage = await screen.findByText('Error message.')
+
+    expect(errorMessage).toBeInTheDocument()
   })
 })
