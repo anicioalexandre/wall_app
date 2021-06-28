@@ -2,10 +2,13 @@ import React, { FC } from 'react'
 
 import { ButtonProps } from './types'
 
-const Button: FC<ButtonProps> = ({ onClick, children }) => {
+const Button: FC<ButtonProps> = ({ onClick, className, children }) => {
   return (
     <button
-      className="bg-primary-dark text-white p-2 rounded hover:bg-primary disabled:bg-gray-20 disabled:cursor-not-allowed smooth"
+      className={`${
+        className ??
+        'bg-primary-dark text-white hover:bg-primary disabled:bg-gray-20'
+      } button-base`}
       onClick={onClick}
     >
       {children}

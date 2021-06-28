@@ -1,3 +1,6 @@
+import { FormEvent } from 'react'
+
 export type ButtonProps = {
-  onClick?: () => void
+  className?: string
+  onClick?: (e?: FormEvent) => void
 }
