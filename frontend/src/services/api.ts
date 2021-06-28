@@ -1,6 +1,5 @@
 import axios from 'axios'
 
-import { setLocalStorage } from './setLocalStorage'
 import { BASE_URL } from './constants'
 import { FetchParams } from './types'
 
@@ -9,7 +8,7 @@ const fetchEndpoint = async ({
   endpoint,
   token,
   data
-}: FetchParams): Promise<unknown> => {
+}: FetchParams): Promise<any> => {
   const headers = token
     ? {
         headers: {
@@ -24,11 +23,12 @@ const fetchEndpoint = async ({
 
   try {
     const response = await axios({ method, url, headers, data })
-    setLocalStorage({ endpoint, response })
 
-    return Promise.resolve(response)
+    return Promise.resolve(response.data)
   } catch (error) {
-    return Promise.reject(error)
+    const { data } = error.response
+
+    return Promise.reject(data)
   }
 }
 

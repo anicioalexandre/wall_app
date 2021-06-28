@@ -1,5 +1,5 @@
 type DataType = {
-  [name: string]: string
+  [name: string]: string | string[]
 }
 
 export type FetchParams = {

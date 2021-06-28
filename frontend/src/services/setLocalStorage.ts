@@ -1,13 +1,5 @@
-import { API_ENDPOINTS } from './constants'
-import { LocalStorageParams } from './types'
+import { TokenDataType } from '../redux/modules/auth'
 
-export const setLocalStorage = ({
-  endpoint,
-  response
-}: LocalStorageParams): void => {
-  const isLogin = endpoint === API_ENDPOINTS.login
-
-  if (isLogin) {
-    localStorage.setItem('token', JSON.stringify(response))
-  }
+export const setLocalStorage = (token: TokenDataType): void => {
+  localStorage.setItem('token', JSON.stringify(token))
 }
