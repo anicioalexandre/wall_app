@@ -1,5 +1,7 @@
-import { LoginState } from './login'
+import { AuthState } from './auth'
+import { SignUpState } from './profile'
 
 export type GlobalState = {
-  login: LoginState
+  auth: AuthState
+  profile: SignUpState
 }
