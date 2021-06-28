@@ -10,7 +10,7 @@ const mockChange = jest.fn()
 
 const renderComponent = (props?: Partial<InputProps>) =>
   renderWithRedux(
-    <Input onChange={mockChange} name="userName" {...props}>
+    <Input onChange={mockChange} name="username" {...props}>
       Test Input
     </Input>
   )
@@ -33,24 +33,31 @@ describe('Input tests', () => {
     expect(mockChange).toHaveBeenCalledTimes(1)
   })
 
-  it('render a text input', async () => {
+  it('renders a text input', async () => {
     renderComponent()
     const input = screen.getByLabelText('Username')
 
     expect(input).toHaveProperty('type', 'text')
   })
 
-  it('render a password input', async () => {
+  it('renders a password input', async () => {
     renderComponent({ name: 'password' })
     const input = screen.getByLabelText('Password')
 
     expect(input).toHaveProperty('type', 'password')
   })
 
-  it('render a email input', async () => {
+  it('renders an email input', async () => {
     renderComponent({ name: 'email' })
     const input = screen.getByLabelText('Email')
 
     expect(input).toHaveProperty('type', 'email')
+  })
+
+  it('renders an error message', async () => {
+    renderComponent({ error: ['Error message.'] })
+    const errorMessage = screen.getByText('Error message.')
+
+    expect(errorMessage).toBeInTheDocument()
   })
 })

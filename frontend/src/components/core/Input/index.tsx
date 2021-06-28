@@ -2,9 +2,21 @@ import React, { FC } from 'react'
 
 import { InputProps } from './types'
 import { INPUT_ATTRIBUTE } from './constants'
+import { capitalizeFirstLetter } from '../../../utils/capitalizeFirstLetter'
 
-const Input: FC<InputProps> = ({ onChange, value, name }) => {
+const Input: FC<InputProps> = ({ onChange, value, name, error }) => {
   const inputAttribute = INPUT_ATTRIBUTE[name]
+
+  const renderError = () => {
+    if (!error || !error.length) return null
+
+    const capitalizedMessages = error.map((messages) =>
+      capitalizeFirstLetter(messages)
+    )
+    const messages = capitalizedMessages.join('\n')
+
+    return <p className="error-message">{messages}</p>
+  }
 
   return (
     <label>
@@ -16,6 +28,7 @@ const Input: FC<InputProps> = ({ onChange, value, name }) => {
         name={name}
         type={inputAttribute.type}
       />
+      {renderError()}
     </label>
   )
 }
