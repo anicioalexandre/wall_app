@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useHistory } from 'react-router'
 
 import { API_ENDPOINTS } from '../../services/constants'
-import { setLocalStorage } from '../../services/setLocalStorage'
+import { setLocalToken } from '../../services/localStorage'
 import { FormType } from '../core/Form/types'
 import { PropsFromRedux } from './index'
 
@@ -11,7 +11,7 @@ const useLogin = ({ loginAction, token }: Omit<PropsFromRedux, 'error'>) => {
 
   useEffect(() => {
     if (token) {
-      setLocalStorage(token)
+      setLocalToken(token)
       history.push('/')
     }
   }, [token])

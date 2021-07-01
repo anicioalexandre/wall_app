@@ -66,4 +66,13 @@ describe('SignUp tests', () => {
 
     expect(mockHistoryPush).toHaveBeenCalledTimes(1)
   })
+
+  it('renders an error message', async () => {
+    mockEndpoint.mockRejectedValue({ detail: 'Error message.' })
+    renderComponent()
+    fillFormAndSubmit()
+    const errorMessage = await screen.findByText('Error message.')
+
+    expect(errorMessage).toBeInTheDocument()
+  })
 })
