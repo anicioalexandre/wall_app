@@ -1,4 +1,5 @@
 coverage
+django-cors-headers
 django-sendgrid-v5
 Django>=3.0,<4.0
 djangorestframework
