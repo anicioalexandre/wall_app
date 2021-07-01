@@ -2,5 +2,7 @@ export const BASE_URL = 'http://localhost:8000' // handling only local api for n
 
 export const API_ENDPOINTS = {
   login: '/api/token/',
-  signUp: '/api/user/signup/'
+  refresh: '/api/token/refresh/',
+  signUp: '/api/user/signup/',
+  getUser: '/api/user/'
 }
