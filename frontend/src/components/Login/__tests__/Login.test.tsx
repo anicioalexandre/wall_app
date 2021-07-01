@@ -67,7 +67,7 @@ describe('Login tests', () => {
   })
 
   it('renders an error message', async () => {
-    mockEndpoint.mockRejectedValue({ detail: 'Error message.' })
+    mockEndpoint.mockRejectedValue({ message: { detail: 'Error message.' } })
     renderComponent()
     fillFormAndSubmit()
     const errorMessage = await screen.findByText('Error message.')
