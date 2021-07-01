@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 
 import { InputProps } from './types'
 import { INPUT_ATTRIBUTE } from './constants'
-import { capitalizeFirstLetter } from '../../../utils/capitalizeFirstLetter'
+import { capitalizeFirstLetter } from '../../../utils/string'
 
 const Input: FC<InputProps> = ({ onChange, value, name, error }) => {
   const inputAttribute = INPUT_ATTRIBUTE[name]
