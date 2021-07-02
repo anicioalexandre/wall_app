@@ -16,4 +16,6 @@ urlpatterns = [
     ),
     # users routes
     path("api/user/", include("users.urls")),
+    # feed routes
+    path("api/feed/", include("feed.urls")),
 ]
