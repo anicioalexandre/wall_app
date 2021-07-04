@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
 import { Switch, Route } from 'react-router-dom'
 
-import Home from './components/Home'
-import Login from './components/Login'
-import SignUp from './components/SignUp'
+import Home from '../components/Home'
+import Login from '../components/Login'
+import SignUp from '../components/SignUp'
 
 const Routes: FC = () => {
   return (
