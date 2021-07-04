@@ -12,7 +12,7 @@ const useSignUp = ({
   const history = useHistory()
 
   useEffect(() => {
-    if (profile?.id) history.push('/')
+    if (profile?.id) history.push('/login')
   }, [profile])
 
   const handleSignUp = (formValues: FormType) =>
