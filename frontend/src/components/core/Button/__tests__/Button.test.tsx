@@ -45,4 +45,11 @@ describe('Button tests', () => {
 
     expect(button).toHaveClass('style')
   })
+
+  it('renders a disabled button', async () => {
+    renderComponent({ isDisabled: true })
+    const button = screen.getByText(/test button/i)
+
+    expect(button).toHaveProperty('disabled', true)
+  })
 })
