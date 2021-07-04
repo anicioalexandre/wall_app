@@ -2,7 +2,7 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { screen } from '@testing-library/dom'
 
-import renderWithRedux from '../../../../../../jest/helpers/renderWithRedux'
+import renderWithRedux from '../../../../../../../../jest/helpers/renderWithRedux'
 import Header from '../index'
 
 const renderComponent = () => renderWithRedux(<Header />)
@@ -15,9 +15,9 @@ describe('Header tests', () => {
     expect(headerTitle).toBeInTheDocument()
   })
 
-  it('renders a logout button', () => {
+  it('renders a action button', () => {
     renderComponent()
-    const button = screen.getByText(/logout/i)
+    const button = screen.getByRole('button')
 
     expect(button).toBeInTheDocument()
   })

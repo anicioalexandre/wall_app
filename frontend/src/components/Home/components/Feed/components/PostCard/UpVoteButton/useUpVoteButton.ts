@@ -1,4 +1,4 @@
-import { API_ENDPOINTS } from '../../../../../services/constants'
+import { API_ENDPOINTS } from '../../../../../../../services/constants'
 import { PropsFromRedux } from './index'
 import { UpVoteButtonProps } from './types'
 
