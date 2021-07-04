@@ -6,7 +6,7 @@ import { setLocalToken } from '../../services/localStorage'
 import { FormType } from '../core/Form/types'
 import { PropsFromRedux } from './index'
 
-const useLogin = ({ loginAction, token }: Omit<PropsFromRedux, 'error'>) => {
+const useLogin = ({ loginAction, token }: Partial<PropsFromRedux>) => {
   const history = useHistory()
 
   useEffect(() => {

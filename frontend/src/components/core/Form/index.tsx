@@ -6,7 +6,7 @@ import { INITIAL_FORM, LOGIN_BUTTON, SIGNUP_BUTTON } from './constants'
 import { FormProps } from './types'
 import useForm from '../../../hooks/useForm'
 
-const Form: FC<FormProps> = ({ onSubmit, isSignUpForm, error }) => {
+const Form: FC<FormProps> = ({ onSubmit, isSignUpForm, isLoading, error }) => {
   const { formValues, handleForm } = useForm({ initialState: INITIAL_FORM })
 
   const handleClick = (e: FormEvent) => {
@@ -29,7 +29,9 @@ const Form: FC<FormProps> = ({ onSubmit, isSignUpForm, error }) => {
         )}
         <Input onChange={handleForm} name="email" error={error?.email} />
         <Input onChange={handleForm} name="password" error={error?.password} />
-        <Button onClick={handleClick}>{buttonName}</Button>
+        <Button onClick={handleClick} isLoading={isLoading}>
+          {buttonName}
+        </Button>
       </div>
     </form>
   )

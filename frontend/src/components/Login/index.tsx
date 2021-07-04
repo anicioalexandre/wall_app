@@ -7,7 +7,12 @@ import Button from '../core/Button'
 import Form from '../core/Form'
 import useLogin from './useLogin'
 
-const Login: FC<PropsFromRedux> = ({ loginAction, token, error }) => {
+const Login: FC<PropsFromRedux> = ({
+  loginAction,
+  token,
+  isLoading,
+  error
+}) => {
   const { handleLogin, history } = useLogin({
     loginAction,
     token
@@ -15,7 +20,7 @@ const Login: FC<PropsFromRedux> = ({ loginAction, token, error }) => {
 
   return (
     <div className="flex flex-col items-center gap-2">
-      <Form onSubmit={handleLogin} error={error} />
+      <Form onSubmit={handleLogin} error={error} isLoading={isLoading} />
       <Button
         className="text-primary-light bg-transparent"
         onClick={() => history.push('/signup')}
@@ -29,7 +34,8 @@ const Login: FC<PropsFromRedux> = ({ loginAction, token, error }) => {
 
 const mapState = ({ auth }: GlobalState) => ({
   token: auth.token,
-  error: auth.error
+  error: auth.error,
+  isLoading: auth.loading
 })
 
 const mapDispatch = {

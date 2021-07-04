@@ -52,4 +52,11 @@ describe('Button tests', () => {
 
     expect(button).toHaveProperty('disabled', true)
   })
+
+  it('renders a different children when isLoading is true', async () => {
+    renderComponent({ isLoading: true })
+    const button = screen.queryByText(/test button/i)
+
+    expect(button).not.toBeInTheDocument()
+  })
 })
