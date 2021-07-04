@@ -1,15 +1,20 @@
 import React, { FC, useEffect } from 'react'
 import { connect, ConnectedProps } from 'react-redux'
 
-import { profileApi } from '../../redux/modules/profile/actions'
-import PostCreator from './components/PostCreator'
-import Header from './components/Header'
+import { clearProfile, profileApi } from '../../redux/modules/profile/actions'
+import PostCreator from './components/Feed/components/PostCreator'
+import Header from './components/Feed/components/Header'
 import Feed from './components/Feed'
 import { decodeToken } from '../../utils/token'
-import { getLocalToken } from '../../services/localStorage'
+import { getLocalToken, removeLocalToken } from '../../services/localStorage'
 import { API_ENDPOINTS } from '../../services/constants'
+import { userLogout } from '../../redux/modules/auth/actions'
 
-const Home: FC<PropsFromRedux> = ({ getProfileAction }) => {
+const Home: FC<PropsFromRedux> = ({
+  getProfileAction,
+  clearProfileAction,
+  logoutAction
+}) => {
   useEffect(() => {
     const token = getLocalToken()
     const userId = decodeToken(token.access).user_id
@@ -18,6 +23,12 @@ const Home: FC<PropsFromRedux> = ({ getProfileAction }) => {
       method: 'get',
       endpoint: `${API_ENDPOINTS.user}${userId}/`
     })
+
+    return () => {
+      removeLocalToken()
+      clearProfileAction()
+      logoutAction()
+    }
   }, [])
 
   return (
@@ -30,7 +41,9 @@ const Home: FC<PropsFromRedux> = ({ getProfileAction }) => {
 }
 
 const mapDispatch = {
-  getProfileAction: profileApi
+  getProfileAction: profileApi,
+  clearProfileAction: clearProfile,
+  logoutAction: userLogout
 }
 
 const connector = connect(null, mapDispatch)
