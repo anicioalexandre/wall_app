@@ -12,6 +12,7 @@ const useLogin = ({ loginAction, token }: Omit<PropsFromRedux, 'error'>) => {
   useEffect(() => {
     if (token) {
       setLocalToken(token)
+
       history.push('/')
     }
   }, [token])
