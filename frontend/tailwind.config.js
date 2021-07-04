@@ -52,11 +52,14 @@ module.exports = {
       },
       minWidth: {
         8: '8rem',/* 128px */
-        16: '16rem'/* 256px */
+        16: '16rem',/* 256px */
+        32: '32rem',/* 512px */
+        36: '36rem'/* 576px */
       },
       maxWidth: {
         8: '8rem',/* 128px */
-        16: '16rem'/* 256px */
+        16: '16rem',/* 256px */
+        32: '32rem'/* 512px */
       },
       screens: {
         'custom-media': {'raw': '(max-width: 920px)'},
