@@ -15,8 +15,9 @@ const fetchEndpoint = async ({
 
     return Promise.resolve(response?.data)
   } catch (error) {
-    const { data, status, config } = error.response
-    return Promise.reject({ message: data, status, url: config.url })
+    const { data } = error.response
+
+    return Promise.reject(data)
   }
 }
 
