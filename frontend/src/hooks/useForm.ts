@@ -1,16 +1,18 @@
 import { ChangeEvent, useState } from 'react'
 
-import { INITIAL_FORM } from './constants'
+import { UseFormType } from './types'
 
-const useForm = () => {
-  const [formValues, setFormValues] = useState(INITIAL_FORM)
+const useForm = ({ initialState }: UseFormType) => {
+  const [formValues, setFormValues] = useState(initialState)
 
   const handleForm = (e: ChangeEvent): void => {
     const { value, name } = e.target as HTMLInputElement
     setFormValues((previousForm) => ({ ...previousForm, [name]: value }))
   }
 
-  return { formValues, handleForm }
+  const resetValues = () => setFormValues(initialState)
+
+  return { formValues, handleForm, resetValues }
 }
 
 export default useForm
