@@ -1,7 +1,7 @@
 from django.urls import reverse
 from rest_framework import status, test, exceptions
 
-from .models import Feed
+from .models import Post
 from users.models import User
 
 
@@ -14,7 +14,7 @@ class FeedTests(test.APITestCase):
         self.tester = User.objects.create_user(
             "sirtester@test.com", "tester", "Sir Tester", "sirtester94"
         )
-        Feed.objects.create(author_id=2, content="Some cool post.")
+        Post.objects.create(author_id=2, content="Some cool post.")
         response = self.client.get(self.get_create_post_url, format="json")
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)

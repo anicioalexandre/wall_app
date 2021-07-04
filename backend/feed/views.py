@@ -1,3 +1,4 @@
+from abc import abstractmethod
 from rest_framework import status
 from rest_framework.permissions import (
     IsAuthenticatedOrReadOnly,
@@ -8,37 +9,69 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from .serializer import FeedSerializer
-from .models import Feed
+from .models import Post, UserPostPreferences
 
 
 class FeedView(ListCreateAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
-    queryset = Feed.objects.all()
+    queryset = Post.objects.all()
     serializer_class = FeedSerializer
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
 
 
-# class DecreaseVote():
-#     def decrease(self, post):
+class BaseUpVote:
+    @abstractmethod
+    def change_up_vote(self, post):
+        pass
+
+    def save_up_vote(self, pk, user):
+        print(user)
+        feed_post = self.change_up_vote(Post.objects.get(id=pk), user)
+        feed_post.save()
 
 
-class UpdateUpVoteView(APIView):
+class RemoveUpVote(BaseUpVote):
+    def change_up_vote(self, post, user):
+        # preferences = UserPostPreferences.objects.get(user=user, post=post)
+        preferences = UserPostPreferences.objects.filter(
+            user=user.id, post=post
+        )
+        preferences.delete()
+
+        post.user_up_votes.remove(user)
+        post.up_vote -= 1
+        return post
+
+
+class AddUpVote(BaseUpVote):
+    def change_up_vote(self, post, user):
+        preferences = UserPostPreferences(user=user, post=post)
+        preferences.save()
+
+        post.user_up_votes.add(user)
+        post.up_vote += 1
+        return post
+
+
+class AddVUpVoteView(APIView):
     permission_classes = [IsAuthenticated]
-    serializer_class = FeedSerializer
 
     def put(self, request, pk):
-        vote = self.request.data["vote"]
-        feed_post = Feed.objects.get(id=pk)
-        if vote is True:
-            feed_post.up_vote += 1
-        if vote is False:
-            feed_post.up_vote -= 1
-        serializer = FeedSerializer(
-            feed_post, data={"feed_post": feed_post}, partial=True
-        )
-        if serializer.is_valid():
-            feed_post.save()
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        try:
+            AddUpVote().save_up_vote(pk, request.user)
+            return Response(status=status.HTTP_200_OK)
+        except (Exception):
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+class RemoveUpVoteView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def put(self, request, pk):
+        try:
+            RemoveUpVote().save_up_vote(pk, request.user)
+            return Response(status=status.HTTP_200_OK)
+        except (Exception):
+            return Response(status=status.HTTP_400_BAD_REQUEST)
