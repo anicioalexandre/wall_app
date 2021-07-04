@@ -10,18 +10,16 @@ import useSignUp from './useSignUp'
 const SignUp: FC<PropsFromRedux> = ({ signUpAction, profile, error }) => {
   const { handleSignUp, history } = useSignUp({ signUpAction, profile })
 
-  const { message } = error
-
   return (
     <div className="flex flex-col items-center gap-2">
-      <Form onSubmit={handleSignUp} error={message} isSignUpForm />
+      <Form onSubmit={handleSignUp} error={error} isSignUpForm />
       <Button
         className="text-primary-light bg-transparent"
         onClick={() => history.push('/login')}
       >
         Already have an account? Login here!
       </Button>
-      {message?.detail && <p className="error-message">{message.detail}</p>}
+      {error?.detail && <p className="error-error">{error.detail}</p>}
     </div>
   )
 }

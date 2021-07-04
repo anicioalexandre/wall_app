@@ -2,12 +2,12 @@ import React, { FC, FormEvent } from 'react'
 
 import Input from '../Input'
 import Button from '../Button'
-import { LOGIN_BUTTON, SIGNUP_BUTTON } from './constants'
+import { INITIAL_FORM, LOGIN_BUTTON, SIGNUP_BUTTON } from './constants'
 import { FormProps } from './types'
-import useForm from './useForm'
+import useForm from '../../../hooks/useForm'
 
 const Form: FC<FormProps> = ({ onSubmit, isSignUpForm, error }) => {
-  const { formValues, handleForm } = useForm()
+  const { formValues, handleForm } = useForm({ initialState: INITIAL_FORM })
 
   const handleClick = (e: FormEvent) => {
     e.preventDefault()

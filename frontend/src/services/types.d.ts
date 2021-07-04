@@ -3,9 +3,8 @@ type DataType = {
 }
 
 export type FetchParams = {
-  method: 'get' | 'post'
+  method: 'get' | 'post' | 'put'
   endpoint: string
-  token?: string
   data?: DataType
 }
 
@@ -14,7 +13,7 @@ export type LocalStorageParams = {
   response: unknown
 }
 
-export type ErrorMessage = {
+export type AuthErrorMessage = {
   detail?: string
   email?: string[]
   password?: string[]
@@ -22,10 +21,16 @@ export type ErrorMessage = {
   username?: string[]
 }
 
+export type FeedErrorMessage = {
+  detail?: string
+  author?: string[]
+  content?: string[]
+  created_at?: string[]
+  createdAt?: string[]
+  up_vote?: string[]
+  upVote?: string[]
+}
+
 export type ErrorType =
-  | {
-      message?: ErrorMessage
-      status?: number
-      url?: string
-    }
+  | (AuthErrorMessage & FeedErrorMessage)
   | Record<string, never>

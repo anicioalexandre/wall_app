@@ -3,4 +3,5 @@ export type InputProps = {
   value?: string
   onChange?: (e: import('react').ChangeEvent) => void
   error?: string[]
+  className?: string
 }

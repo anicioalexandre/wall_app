@@ -7,6 +7,14 @@
     outline: 0;
   }
 
+  ::-webkit-input-placeholder {
+    @apply p-4 text-center;
+  }
+
+  ::-moz-placeholder {
+    @apply p-4 text-center;
+  }
+
   .smooth {
     @apply transition-all duration-300 ease-in-out;
   }
@@ -16,6 +24,18 @@
   }
 
   .button-base {
-    @apply p-2 rounded disabled:cursor-not-allowed smooth
+    @apply rounded disabled:cursor-not-allowed smooth;
+  }
+  
+  .colorful {
+    @apply bg-primary-dark text-white hover:bg-primary disabled:bg-gray-20;
+  }
+  
+  .outline-button {
+    @apply border border-primary-dark text-sm p-1 font-bold hover:bg-primary hover:text-white disabled:bg-transparent disabled:text-primary;
+  }
+
+  .input-base {
+    @apply border-b border-gray-20 focus:border-gray-60 bg-transparent no-outline p-1 w-full smooth;
   }
 }

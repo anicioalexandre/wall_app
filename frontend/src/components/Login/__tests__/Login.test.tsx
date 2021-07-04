@@ -1,5 +1,4 @@
 import React from 'react'
-import { MemoryRouter } from 'react-router'
 import '@testing-library/jest-dom/extend-expect'
 import { fireEvent, screen, waitFor } from '@testing-library/dom'
 
@@ -17,6 +16,8 @@ jest.mock('react-router', () => ({
   ...(jest.requireActual('react-router-dom') as Record<string, never>),
   useHistory: () => ({ push: mockHistoryPush })
 }))
+
+jest.mock('jwt-decode', () => (token: string) => ({ user_id: token }))
 
 jest.mock('../../../services/api')
 const mockEndpoint = fetchEndpoint as jest.Mock
@@ -67,7 +68,7 @@ describe('Login tests', () => {
   })
 
   it('renders an error message', async () => {
-    mockEndpoint.mockRejectedValue({ message: { detail: 'Error message.' } })
+    mockEndpoint.mockRejectedValue({ detail: 'Error message.' })
     renderComponent()
     fillFormAndSubmit()
     const errorMessage = await screen.findByText('Error message.')

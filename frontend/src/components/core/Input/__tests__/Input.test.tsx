@@ -9,11 +9,7 @@ import Input from '../index'
 const mockChange = jest.fn()
 
 const renderComponent = (props?: Partial<InputProps>) =>
-  renderWithRedux(
-    <Input onChange={mockChange} name="username" {...props}>
-      Test Input
-    </Input>
-  )
+  renderWithRedux(<Input onChange={mockChange} name="username" {...props} />)
 
 describe('Input tests', () => {
   it('renders Input', () => {
@@ -59,5 +55,12 @@ describe('Input tests', () => {
     const errorMessage = screen.getByText('Error message.')
 
     expect(errorMessage).toBeInTheDocument()
+  })
+
+  it('renders styles from className', () => {
+    renderComponent({ className: 'style' })
+    const button = screen.getByRole('textbox')
+
+    expect(button).toHaveClass('style')
   })
 })

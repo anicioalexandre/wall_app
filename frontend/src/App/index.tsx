@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import Routes from '../Routes'
 
 const App: FC = () => (
-  <div className="flex flex-col items-center h-screen">
+  <div className="h-screen">
     <Routes />
   </div>
 )

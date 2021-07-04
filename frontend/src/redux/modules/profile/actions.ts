@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux'
 
-import { DataType, FetchParams } from '../../../services/types'
+import { FetchParams } from '../../../services/types'
 import fetchEndpoint from '../../../services/api'
 import {
   transformProfileDataToBE,
@@ -8,6 +8,7 @@ import {
   transformProfileErrorToFE
 } from './transformers'
 import {
+  ProfileDataType,
   ProfileFailureAction,
   ProfileRequestAction,
   ProfileSuccessAction
@@ -16,6 +17,7 @@ import {
 export const REQUEST_PROFILE = 'REQUEST_PROFILE'
 export const REQUEST_PROFILE_SUCCESS = 'REQUEST_PROFILE_SUCCESS'
 export const REQUEST_PROFILE_FAILURE = 'REQUEST_PROFILE_FAILURE'
+export const CLEAR_PROFILE = 'CLEAR_PROFILE'
 
 const requestProfile = (): ProfileRequestAction => ({
   type: REQUEST_PROFILE
@@ -50,17 +52,18 @@ export const profileApi = ({ method, endpoint, data }: FetchParams) => {
       endpoint,
       data: transformedData
     }).then(
-      (profile: DataType) => {
+      (profile: Exclude<ProfileDataType, 'isActive' | 'username'>) => {
         const profileTransformed = transformProfileDataToFE(profile)
-
         return dispatch(requestProfileSuccess({ profile: profileTransformed }))
       },
       (error) => {
         const errorTransformed = transformProfileErrorToFE(error)
-        console.log(errorTransformed, 'errorTransformed')
-        console.log(error, 'error')
         return dispatch(requestProfileFailure({ error: errorTransformed }))
       }
     )
   }
 }
+
+export const clearProfile = (): ProfileRequestAction => ({
+  type: CLEAR_PROFILE
+})

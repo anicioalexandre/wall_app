@@ -24,7 +24,7 @@ class UserTests(TestCase):
         self.assertEqual(user.first_name, self.FIRST_NAME_TEST)
         self.assertFalse(user.is_superuser)
         self.assertFalse(user.is_staff)
-        self.assertFalse(user.is_active)
+        self.assertTrue(user.is_active)
         self.assertEqual(str(user), self.USER_NAME_TEST)
 
         # raises an error when email is not passed:

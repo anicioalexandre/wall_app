@@ -1,6 +1,6 @@
 export type FormProps = {
   onSubmit: (form: any) => void
-  error?: import('../../../services/types').ErrorMessage
+  error?: import('../../../services/types').AuthErrorMessage
   isSignUpForm?: boolean
 }
 
