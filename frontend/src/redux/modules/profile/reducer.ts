@@ -1,7 +1,8 @@
 import {
   REQUEST_PROFILE,
   REQUEST_PROFILE_SUCCESS,
-  REQUEST_PROFILE_FAILURE
+  REQUEST_PROFILE_FAILURE,
+  CLEAR_PROFILE
 } from './actions'
 import { ProfileAction, ProfileState } from './types'
 
@@ -33,6 +34,12 @@ const reducer = (
         ...state,
         loading: false,
         error: action.error
+      }
+    case CLEAR_PROFILE:
+      return {
+        ...state,
+        loading: false,
+        profile: {}
       }
     default:
       return state

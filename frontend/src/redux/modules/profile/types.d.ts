@@ -1,22 +1,34 @@
-export type ProfileEntriesType =
+export type ProfileDataType =
   | {
       email: string
-      password: string
-      username: string
+      password?: string
+      username?: string
+      user_name?: string
+      isActive?: boolean
+      is_active?: boolean
+      id: number
     }
   | Record<string, never>
+
+export type ProfileBEType = {
+  email: string
+  password: string
+  username?: string
+  user_name?: string
+}
 
 type ProfileType =
   | typeof import('./actions').REQUEST_PROFILE
   | typeof import('./actions').REQUEST_PROFILE_SUCCESS
   | typeof import('./actions').REQUEST_PROFILE_FAILURE
+  | typeof import('./actions').CLEAR_PROFILE
 
 type ProfileRequestAction = {
   type: ProfileType
 }
 
 type ProfileSuccessAction = {
-  profile: import('../../../services/types').DataType
+  profile: ProfileDataType
   type: ProfileType
 }
 
@@ -30,7 +42,7 @@ type ProfileAction = ProfileRequestAction &
   ProfileFailureAction
 
 export type ProfileState = {
-  profile: import('../../../services/types').DataType
+  profile: ProfileDataType
   loading: boolean
   error: import('../../../services/types').ErrorType
 }
