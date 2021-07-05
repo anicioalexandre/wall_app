@@ -53,7 +53,7 @@ docs/_build/
 /db
 
 # Environment variables
-.env
+# .env // commiting env to make app tests easier 
 
 # Front-End node_modules
 **/node_modules
