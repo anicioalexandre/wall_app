@@ -1,7 +1,8 @@
 import { Dispatch } from 'redux'
 
-import { FetchParams } from '../../../services/types'
-import fetchEndpoint from '../../../services/api'
+import { FetchParams } from '@services/types'
+import fetchEndpoint from '@services/api'
+
 import {
   TokenFailureAction,
   TokenRequestAction,

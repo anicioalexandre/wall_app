@@ -1,18 +1,29 @@
 import React, { FC } from 'react'
 import { connect, ConnectedProps } from 'react-redux'
 
-import { profileApi } from '../../redux/modules/profile/actions'
-import { GlobalState } from '../../redux/modules/types'
-import Button from '../core/Button'
-import Form from '../core/Form'
+import { profileApi } from '@redux/modules/profile/actions'
+import { GlobalState } from '@redux/modules/types'
+import Button from '@components/core/Button'
+import Form from '@components/core/Form'
+
 import useSignUp from './useSignUp'
 
-const SignUp: FC<PropsFromRedux> = ({ signUpAction, profile, error }) => {
+const SignUp: FC<PropsFromRedux> = ({
+  signUpAction,
+  profile,
+  IsLoading,
+  error
+}) => {
   const { handleSignUp, history } = useSignUp({ signUpAction, profile })
 
   return (
     <div className="flex flex-col items-center gap-2">
-      <Form onSubmit={handleSignUp} error={error} isSignUpForm />
+      <Form
+        onSubmit={handleSignUp}
+        error={error}
+        isLoading={IsLoading}
+        isSignUpForm
+      />
       <Button
         className="text-primary-light bg-transparent"
         onClick={() => history.push('/login')}
@@ -26,7 +37,8 @@ const SignUp: FC<PropsFromRedux> = ({ signUpAction, profile, error }) => {
 
 const mapState = ({ profile }: GlobalState) => ({
   error: profile.error,
-  profile: profile.profile
+  profile: profile.profile,
+  IsLoading: profile.loading
 })
 
 const mapDispatch = {

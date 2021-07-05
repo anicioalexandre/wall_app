@@ -2,7 +2,8 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { screen } from '@testing-library/dom'
 
-import renderWithRedux from '../../../../../../jest/helpers/renderWithRedux'
+import renderWithRedux from '@jest/helpers/renderWithRedux'
+
 import { PostCardProps } from '../types'
 import PostCard from '../index'
 
@@ -27,7 +28,7 @@ describe('PostCard tests', () => {
     renderComponent()
     const content = screen.getByText('Some cool post.')
     const username = screen.getByText('@tester')
-    const date = screen.getByText('7/4/2021 • 12:22:58 AM')
+    const date = screen.getByText('7/4/2021 • 3:22:58 AM')
     const upVote = screen.getByText('1')
 
     expect(content).toBeInTheDocument()

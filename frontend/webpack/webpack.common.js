@@ -51,6 +51,15 @@ module.exports = ({ dirName }) => ({
     })
   ],
   resolve: {
+    alias: {
+      '@src': path.resolve(dirName, 'src/'),
+      '@components': path.resolve(dirName, 'src/components'),
+      '@services': path.resolve(dirName, 'src/services'),
+      '@hooks': path.resolve(dirName, 'src/hooks'),
+      '@utils': path.resolve(dirName, 'src/utils'),
+      '@redux': path.resolve(dirName, 'src/redux'),
+      '@jest': path.resolve(dirName, 'jest')
+    },
     extensions: ['.tsx', '.ts', '.js'],
     fallback: {
       fs: false,

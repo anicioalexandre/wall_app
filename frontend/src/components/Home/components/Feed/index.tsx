@@ -1,10 +1,11 @@
 import React, { FC, useEffect } from 'react'
 import { connect, ConnectedProps } from 'react-redux'
 
-import { getPostsApi } from '../../../../redux/modules/feed/actions'
-import { GlobalState } from '../../../../redux/modules/types'
-import { API_ENDPOINTS } from '../../../../services/constants'
-import PostCard from '../PostCard'
+import { getPostsApi } from '@redux/modules/feed/actions'
+import { GlobalState } from '@redux/modules/types'
+import { API_ENDPOINTS } from '@services/constants'
+
+import PostCard from './components/PostCard'
 
 const Feed: FC<PropsFromRedux> = ({ getPostsAction, posts, hasPostUpdate }) => {
   useEffect(() => {
@@ -14,7 +15,7 @@ const Feed: FC<PropsFromRedux> = ({ getPostsAction, posts, hasPostUpdate }) => {
   }, [hasPostUpdate])
 
   return (
-    <div className="flex flex-col items-center gap-6 mt-2">
+    <div className="flex flex-col items-center gap-6 mt-2 overflow-auto max-h-75">
       {posts.map((post) => (
         <PostCard key={post.id} post={post} />
       ))}

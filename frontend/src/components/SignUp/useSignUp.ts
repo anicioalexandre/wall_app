@@ -1,14 +1,12 @@
 import { useEffect } from 'react'
 import { useHistory } from 'react-router'
 
-import { API_ENDPOINTS } from '../../services/constants'
-import { FormType } from '../core/Form/types'
+import { API_ENDPOINTS } from '@services/constants'
+import { FormType } from '@components/core/Form/types'
+
 import { PropsFromRedux } from './index'
 
-const useSignUp = ({
-  signUpAction,
-  profile
-}: Omit<PropsFromRedux, 'error'>) => {
+const useSignUp = ({ signUpAction, profile }: Partial<PropsFromRedux>) => {
   const history = useHistory()
 
   useEffect(() => {

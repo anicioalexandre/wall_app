@@ -1,10 +1,11 @@
 import React, { FC } from 'react'
 import { connect, ConnectedProps } from 'react-redux'
 
-import { createPostsApi } from '../../../../redux/modules/feed/actions'
-import { GlobalState } from '../../../../redux/modules/types'
-import Button from '../../../core/Button'
-import TextArea from '../../../core/TextArea'
+import { createPostsApi } from '@redux/modules/feed/actions'
+import { GlobalState } from '@redux/modules/types'
+import Button from '@components/core/Button'
+import TextArea from '@components/core/TextArea'
+
 import usePostCreator from './usePostCreator'
 
 const PostCreator: FC<PropsFromRedux> = ({

@@ -2,17 +2,18 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { fireEvent, screen, waitFor } from '@testing-library/dom'
 
-import renderWithRedux from '../../../../../../jest/helpers/renderWithRedux'
-import fetchEndpoint from '../../../../../services/api'
+import renderWithRedux from '@jest/helpers/renderWithRedux'
+import { GlobalState } from '@redux/modules/types'
+import fetchEndpoint from '@services/api'
+
 import PostCreator from '../index'
-import { GlobalState } from '../../../../../redux/modules/types'
-import { FILLED_STATE, INITIAL_STATE } from '../../Feed/__mocks__/constants'
+import { FILLED_STATE, INITIAL_STATE } from '../../../__mocks__/constants'
 
 beforeEach(() => {
   jest.clearAllMocks()
 })
 
-jest.mock('../../../../../services/api')
+jest.mock('../../../../../../../services/api')
 const mockEndpoint = fetchEndpoint as jest.Mock
 
 const renderComponent = ({ initialState }: { initialState?: GlobalState }) =>

@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 
-import { capitalizeFirstLetter, joinWithSeparator } from '../../../utils/string'
+import { capitalizeFirstLetter, joinWithSeparator } from '@utils/string'
+
 import { TextAreaProps } from './types'
 
 const TextArea: FC<TextAreaProps> = ({
@@ -26,7 +27,7 @@ const TextArea: FC<TextAreaProps> = ({
   return (
     <>
       <textarea
-        className="text-primary p-4 bg-gray-20 hover:bg-gray-60 min-h-6 min-w-32 disabled:bg-gray-20 disabled:cursor-not-allowed resize-none no-outline rounded smooth"
+        className="text-primary p-4 bg-gray-20 hover:bg-gray-60 min-h-6 min-w-32 custom-media:min-w-16 disabled:bg-gray-20 disabled:cursor-not-allowed resize-none no-outline rounded smooth"
         disabled={isDisabled}
         maxLength={maxLength}
         name={name}

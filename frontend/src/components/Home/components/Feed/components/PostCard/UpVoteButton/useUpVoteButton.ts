@@ -1,6 +1,7 @@
-import { API_ENDPOINTS } from '../../../../../services/constants'
-import { PropsFromRedux } from './index'
+import { API_ENDPOINTS } from '@services/constants'
+
 import { UpVoteButtonProps } from './types'
+import { PropsFromRedux } from './index'
 
 const useUpVoteButton = ({
   postId,

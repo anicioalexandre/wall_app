@@ -48,21 +48,25 @@ module.exports = {
         6: '6rem',/* 96px */
         8: '8rem',/* 128px */
         11: '11rem',/* 176px */
-        16: '16rem'/* 256px */
+        16: '16rem',/* 256px */
+        75: '75vh'
       },
       minWidth: {
         8: '8rem',/* 128px */
         16: '16rem',/* 256px */
+        20: '20rem',/* 320px */
+        24: '24rem',/* 384px */
         32: '32rem',/* 512px */
         36: '36rem'/* 576px */
       },
       maxWidth: {
         8: '8rem',/* 128px */
         16: '16rem',/* 256px */
+        26: '26rem',/* 416px */
         32: '32rem'/* 512px */
       },
       screens: {
-        'custom-media': {'raw': '(max-width: 920px)'},
+        'custom-media': {'raw': '(max-width: 600px)'},
       }
     }
   },

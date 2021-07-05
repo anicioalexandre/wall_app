@@ -19,7 +19,7 @@ export type TokenSuccessAction = {
 }
 
 export type TokenFailureAction = {
-  error: import('../../../services/types').ErrorType
+  error: import('@services/types').ErrorType
   type: TokenType
 }
 
@@ -30,5 +30,5 @@ export type TokenAction = TokenRequestAction &
 export type AuthState = {
   token: TokenDataType
   loading: boolean
-  error: import('../../../services/types').ErrorType
+  error: import('@services/types').ErrorType
 }

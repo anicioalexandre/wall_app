@@ -1,9 +1,10 @@
 import React, { FC } from 'react'
 import { connect, ConnectedProps } from 'react-redux'
-import Button from '../../../../core/Button'
 
-import { updatePostsApi } from '../../../../../redux/modules/feed/actions'
-import { GlobalState } from '../../../../../redux/modules/types'
+import { updatePostsApi } from '@redux/modules/feed/actions'
+import { GlobalState } from '@redux/modules/types'
+import Button from '@components/core/Button'
+
 import useUpVoteButton from './useUpVoteButton'
 import { UpVoteButtonProps } from './types'
 

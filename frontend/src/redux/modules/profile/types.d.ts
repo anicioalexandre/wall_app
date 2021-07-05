@@ -33,7 +33,7 @@ type ProfileSuccessAction = {
 }
 
 type ProfileFailureAction = {
-  error: import('../../../services/types').ErrorType
+  error: import('@services/types').ErrorType
   type: ProfileType
 }
 
@@ -44,5 +44,5 @@ type ProfileAction = ProfileRequestAction &
 export type ProfileState = {
   profile: ProfileDataType
   loading: boolean
-  error: import('../../../services/types').ErrorType
+  error: import('@services/types').ErrorType
 }

@@ -1,6 +1,7 @@
-import useForm from '../../../../hooks/useForm'
-import { API_ENDPOINTS } from '../../../../services/constants'
-import { joinWithSeparator } from '../../../../utils/string'
+import { API_ENDPOINTS } from '@services/constants'
+import { joinWithSeparator } from '@utils/string'
+import useForm from '@hooks/useForm'
+
 import { INITIAL_STATE } from './constants'
 import { PropsFromRedux } from './index'
 

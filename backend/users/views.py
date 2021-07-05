@@ -26,7 +26,6 @@ class AddUserView(APIView):
                 EmailHandler(request, user_json).send()
 
                 return Response(user_json, status=status.HTTP_201_CREATED)
-        print(serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 

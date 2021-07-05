@@ -4,7 +4,7 @@
   "description": "Wall App for TSL Test.",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "TZ=UTC jest",
     "dev": "NODE_ENV=development webpack --mode development",
     "start": "NODE_ENV=development webpack serve --open",
     "build": "NODE_ENV=production webpack --mode production"

@@ -5,7 +5,7 @@ describe('date utils test', () => {
     it('formats a date', async () => {
       const dateFormatted = formatDate('2021-07-04T03:22:58.608758Z')
 
-      expect(dateFormatted).toBe('7/4/2021 • 12:22:58 AM')
+      expect(dateFormatted).toBe('7/4/2021 • 3:22:58 AM')
     })
 
     it('handles invalid dates', async () => {

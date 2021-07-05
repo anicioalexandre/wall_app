@@ -3,6 +3,14 @@
   "compilerOptions": {
     "outDir": "./dist"
   },
-  "include": ["**/*.ts*"],
+  "include": [
+    "**/*.ts*",
+    "@components/**/*",
+    "@services/**/*",
+    "@hooks/**/*",
+    "@utils/**/*",
+    "@redux/**/*",
+    "@jest/**/*"
+  ],
   "exclude": ["node_modules"]
 }

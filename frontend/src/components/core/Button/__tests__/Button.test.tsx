@@ -2,7 +2,7 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { fireEvent, screen } from '@testing-library/dom'
 
-import renderWithRedux from '../../../../../jest/helpers/renderWithRedux'
+import renderWithRedux from '@jest/helpers/renderWithRedux'
 import { ButtonProps } from '../types'
 import Button from '../index'
 
@@ -51,5 +51,12 @@ describe('Button tests', () => {
     const button = screen.getByText(/test button/i)
 
     expect(button).toHaveProperty('disabled', true)
+  })
+
+  it('renders a different children when isLoading is true', async () => {
+    renderComponent({ isLoading: true })
+    const button = screen.queryByText(/test button/i)
+
+    expect(button).not.toBeInTheDocument()
   })
 })
