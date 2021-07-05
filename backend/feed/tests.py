@@ -7,7 +7,6 @@ from users.models import User
 
 class FeedTests(test.APITestCase):
     get_create_post_url = reverse("get_feed")
-    update_up_vote_url = reverse("update_vote", kwargs={"pk": 1})
 
     # the user can see posts without being logged
     def test_get_posts_on_feed_unlogged(self):
