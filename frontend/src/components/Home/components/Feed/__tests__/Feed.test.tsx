@@ -2,10 +2,11 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { screen } from '@testing-library/dom'
 
-import renderWithRedux from '../../../../../../jest/helpers/renderWithRedux'
-import Feed from '../index'
+import renderWithRedux from '@jest/helpers/renderWithRedux'
+import { GlobalState } from '@redux/modules/types'
+
 import { FILLED_STATE, INITIAL_STATE } from '../__mocks__/constants'
-import { GlobalState } from '../../../../../redux/modules/types'
+import Feed from '../index'
 
 const renderComponent = ({ initialState }: { initialState?: GlobalState }) =>
   renderWithRedux(<Feed />, { initialState })

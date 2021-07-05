@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
-import { formatDate } from '../../../../../../utils/date'
+
+import { formatDate } from '@utils/date'
 
 import { PostCardProps } from './types'
 import UpVoteButton from './UpVoteButton'

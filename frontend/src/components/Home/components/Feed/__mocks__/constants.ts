@@ -1,4 +1,4 @@
-import { GlobalState } from '../../../../../redux/modules/types'
+import { GlobalState } from '@redux/modules/types'
 
 export const INITIAL_STATE: GlobalState = {
   auth: {

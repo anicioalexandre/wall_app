@@ -1,5 +1,6 @@
-import { DataType, ErrorType } from '../../../services/types'
-import { ProfileDataType, ProfileBEType } from './types'
+import { DataType, ErrorType } from '@services/types'
+
+import { ProfileDataType } from './types'
 
 export const transformProfileDataToBE = (profileData?: DataType): DataType => {
   return {

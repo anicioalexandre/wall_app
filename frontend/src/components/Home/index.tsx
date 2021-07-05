@@ -1,14 +1,15 @@
 import React, { FC, useEffect } from 'react'
 import { connect, ConnectedProps } from 'react-redux'
 
-import { clearProfile, profileApi } from '../../redux/modules/profile/actions'
+import { clearProfile, profileApi } from '@redux/modules/profile/actions'
+import { userLogout } from '@redux/modules/auth/actions'
+import { getLocalToken, removeLocalToken } from '@services/localStorage'
+import { API_ENDPOINTS } from '@services/constants'
+import { decodeToken } from '@utils/token'
+
 import PostCreator from './components/Feed/components/PostCreator'
 import Header from './components/Feed/components/Header'
 import Feed from './components/Feed'
-import { decodeToken } from '../../utils/token'
-import { getLocalToken, removeLocalToken } from '../../services/localStorage'
-import { API_ENDPOINTS } from '../../services/constants'
-import { userLogout } from '../../redux/modules/auth/actions'
 
 const Home: FC<PropsFromRedux> = ({
   getProfileAction,

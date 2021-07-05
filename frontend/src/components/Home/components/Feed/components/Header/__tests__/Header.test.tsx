@@ -2,7 +2,8 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { screen } from '@testing-library/dom'
 
-import renderWithRedux from '../../../../../../../../jest/helpers/renderWithRedux'
+import renderWithRedux from '@jest/helpers/renderWithRedux'
+
 import Header from '../index'
 
 const renderComponent = () => renderWithRedux(<Header />)

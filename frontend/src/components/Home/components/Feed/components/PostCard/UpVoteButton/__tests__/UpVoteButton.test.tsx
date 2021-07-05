@@ -2,15 +2,16 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { fireEvent, screen, waitFor } from '@testing-library/dom'
 
-import renderWithRedux from '../../../../../../../../../jest/helpers/renderWithRedux'
-import fetchEndpoint from '../../../../../../../../services/api'
-import UpVoteButton from '../index'
-import { UpVoteButtonProps } from '../types'
-import { GlobalState } from '../../../../../../../../redux/modules/types'
+import renderWithRedux from '@jest/helpers/renderWithRedux'
+import { GlobalState } from '@redux/modules/types'
+import fetchEndpoint from '@services/api'
 import {
   FILLED_STATE,
   INITIAL_STATE
-} from '../../../../../Feed/__mocks__/constants'
+} from '@components/Home/components/Feed/__mocks__/constants'
+
+import { UpVoteButtonProps } from '../types'
+import UpVoteButton from '../index'
 
 beforeEach(() => {
   jest.clearAllMocks()

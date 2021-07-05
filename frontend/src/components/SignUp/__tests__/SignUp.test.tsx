@@ -2,8 +2,9 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { fireEvent, screen, waitFor } from '@testing-library/dom'
 
-import renderWithRedux from '../../../../jest/helpers/renderWithRedux'
-import fetchEndpoint from '../../../services/api'
+import renderWithRedux from '@jest/helpers/renderWithRedux'
+import fetchEndpoint from '@services/api'
+
 import SignUp from '../index'
 
 beforeEach(() => {

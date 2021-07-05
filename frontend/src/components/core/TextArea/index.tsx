@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 
-import { capitalizeFirstLetter, joinWithSeparator } from '../../../utils/string'
+import { capitalizeFirstLetter, joinWithSeparator } from '@utils/string'
+
 import { TextAreaProps } from './types'
 
 const TextArea: FC<TextAreaProps> = ({

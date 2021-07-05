@@ -1,10 +1,11 @@
 import React, { FC } from 'react'
 import { connect, ConnectedProps } from 'react-redux'
 
-import { tokenApi } from '../../redux/modules/auth/actions'
-import { GlobalState } from '../../redux/modules/types'
-import Button from '../core/Button'
-import Form from '../core/Form'
+import { tokenApi } from '@redux/modules/auth/actions'
+import { GlobalState } from '@redux/modules/types'
+import Button from '@components/core/Button'
+import Form from '@components/core/Form'
+
 import useLogin from './useLogin'
 
 const Login: FC<PropsFromRedux> = ({

@@ -1,4 +1,4 @@
-import { TokenDataType } from '../redux/modules/auth/types'
+import { TokenDataType } from '@redux/modules/auth/types'
 
 export const setLocalToken = (token: TokenDataType): void => {
   localStorage.setItem('token', JSON.stringify(token))

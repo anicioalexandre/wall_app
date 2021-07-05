@@ -1,8 +1,9 @@
 import React, { FC } from 'react'
 
+import { capitalizeFirstLetter } from '@utils/string'
+
 import { InputProps } from './types'
 import { INPUT_ATTRIBUTE } from './constants'
-import { capitalizeFirstLetter } from '../../../utils/string'
 
 const Input: FC<InputProps> = ({ onChange, value, name, error, className }) => {
   const inputAttribute = INPUT_ATTRIBUTE[name] || INPUT_ATTRIBUTE.default

@@ -2,9 +2,9 @@ import React, { FC } from 'react'
 import { useHistory } from 'react-router'
 import { connect, ConnectedProps } from 'react-redux'
 
-import { LOGIN_BUTTON, LOGOUT_BUTTON } from '../../../../../core/Form/constants'
-import { GlobalState } from '../../../../../../redux/modules/types'
-import Button from '../../../../../core/Button'
+import { LOGIN_BUTTON, LOGOUT_BUTTON } from '@components/core/Form/constants'
+import { GlobalState } from '@redux/modules/types'
+import Button from '@components/core/Button'
 
 const ActionButton: FC<PropsFromRedux> = ({ profileId }) => {
   const history = useHistory()

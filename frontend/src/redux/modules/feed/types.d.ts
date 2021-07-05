@@ -35,7 +35,7 @@ export type UpdateFeedPostsSuccessAction = {
 }
 
 export type FeedPostsFailureAction = {
-  error: import('../../../services/types').ErrorType
+  error: import('@services/types').ErrorType
   type: FeedPostsType
 }
 
@@ -47,6 +47,6 @@ export type FeedPostsAction = FeedPostsRequestAction &
 export type FeedState = {
   posts: FeedPostDataType[]
   loading: boolean
-  error: import('../../../services/types').ErrorType
+  error: import('@services/types').ErrorType
   hasUpdate: boolean
 }

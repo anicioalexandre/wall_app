@@ -1,10 +1,11 @@
 import React, { FC } from 'react'
 import { connect, ConnectedProps } from 'react-redux'
 
-import { profileApi } from '../../redux/modules/profile/actions'
-import { GlobalState } from '../../redux/modules/types'
-import Button from '../core/Button'
-import Form from '../core/Form'
+import { profileApi } from '@redux/modules/profile/actions'
+import { GlobalState } from '@redux/modules/types'
+import Button from '@components/core/Button'
+import Form from '@components/core/Form'
+
 import useSignUp from './useSignUp'
 
 const SignUp: FC<PropsFromRedux> = ({

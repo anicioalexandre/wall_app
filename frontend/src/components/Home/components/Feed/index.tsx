@@ -1,9 +1,10 @@
 import React, { FC, useEffect } from 'react'
 import { connect, ConnectedProps } from 'react-redux'
 
-import { getPostsApi } from '../../../../redux/modules/feed/actions'
-import { GlobalState } from '../../../../redux/modules/types'
-import { API_ENDPOINTS } from '../../../../services/constants'
+import { getPostsApi } from '@redux/modules/feed/actions'
+import { GlobalState } from '@redux/modules/types'
+import { API_ENDPOINTS } from '@services/constants'
+
 import PostCard from './components/PostCard'
 
 const Feed: FC<PropsFromRedux> = ({ getPostsAction, posts, hasPostUpdate }) => {

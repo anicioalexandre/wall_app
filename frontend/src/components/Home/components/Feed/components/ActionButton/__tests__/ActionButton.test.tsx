@@ -2,10 +2,11 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { fireEvent, screen } from '@testing-library/dom'
 
-import renderWithRedux from '../../../../../../../../jest/helpers/renderWithRedux'
-import ActionButton from '../index'
-import { GlobalState } from '../../../../../../../redux/modules/types'
+import renderWithRedux from '@jest/helpers/renderWithRedux'
+import { GlobalState } from '@redux/modules/types'
+
 import { FILLED_STATE, INITIAL_STATE } from '../../../__mocks__/constants'
+import ActionButton from '../index'
 
 beforeEach(() => {
   jest.clearAllMocks()

@@ -1,4 +1,5 @@
-import { ErrorType } from '../../../services/types'
+import { ErrorType } from '@services/types'
+
 import { FeedPostDataType } from './types'
 
 export const transformFeedPostsToFE = (
