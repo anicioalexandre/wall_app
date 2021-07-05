@@ -14,7 +14,7 @@ const PostCard: FC<PostCardProps> = ({ post }) => {
         <p className="text-primary-dark font-bold">@{author}</p>
         <p className="text-gray-60">{formatDate(createdAt)}</p>
       </div>
-      <div className="max-w-32 custom-media:max-w-16 text-primary break-words">
+      <div className="max-w-26 custom-media:max-w-16 text-primary break-words">
         {content}
       </div>
       <div className="flex gap-3 items-center">

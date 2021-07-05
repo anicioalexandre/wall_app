@@ -62,6 +62,7 @@ module.exports = {
       maxWidth: {
         8: '8rem',/* 128px */
         16: '16rem',/* 256px */
+        26: '26rem',/* 416px */
         32: '32rem'/* 512px */
       },
       screens: {
